@@ -3,7 +3,8 @@ speakeasyVersion: latest
 sources:
     Linkkit API:
         inputs:
-            - location: out.openapi.yaml
+            - location: .speakeasy/out.openapi.yaml
+        output: .speakeasy/out.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api
 targets:
