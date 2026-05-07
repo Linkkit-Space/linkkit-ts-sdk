@@ -6,10 +6,6 @@ Developer-friendly & type-safe Typescript SDK specifically catered to leverage *
 [![License: MIT](https://img.shields.io/badge/LICENSE_//_MIT-3b5bdb?style=for-the-badge&labelColor=eff6ff)](https://opensource.org/licenses/MIT)
 
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/linkkit/linkkit). Delete this section before > publishing to a package manager.
-
 <!-- Start Summary [summary] -->
 ## Summary
 
@@ -59,34 +55,30 @@ Responses include a `meta` object with `page`, `limit`, and `total`.
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add <UNSET>
+npm add linkkit
 ```
 
 ### PNPM
 
 ```bash
-pnpm add <UNSET>
+pnpm add linkkit
 ```
 
 ### Bun
 
 ```bash
-bun add <UNSET>
+bun add linkkit
 ```
 
 ### Yarn
 
 ```bash
-yarn add <UNSET>
+yarn add linkkit
 ```
 
 > [!NOTE]
