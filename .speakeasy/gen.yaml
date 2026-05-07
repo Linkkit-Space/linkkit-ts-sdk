@@ -81,7 +81,7 @@ typescript:
   moduleFormat: esm
   multipartArrayFormat: standard
   outputModelSuffix: output
-  packageName: linkkit
+  packageName: "@getlinkkit/linkkit"
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
   responseFormat: flat

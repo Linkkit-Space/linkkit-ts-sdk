@@ -1,5 +1,5 @@
 {
-  "name": "linkkit",
+  "name": "@getlinkkit/linkkit",
   "version": "0.2.3",
   "author": "Speakeasy",
   "type": "module",
