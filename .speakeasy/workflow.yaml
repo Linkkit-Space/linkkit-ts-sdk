@@ -11,6 +11,9 @@ targets:
     linkkit:
         target: typescript
         source: Linkkit API
+        publish:
+            npm:
+                token: $npm_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api-typescript-code-samples
