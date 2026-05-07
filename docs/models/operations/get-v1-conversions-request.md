@@ -1,0 +1,23 @@
+# GetV1ConversionsRequest
+
+## Example Usage
+
+```typescript
+import { GetV1ConversionsRequest } from "linkkit/models/operations";
+
+let value: GetV1ConversionsRequest = {
+  type: "lead",
+};
+```
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `page`                                                                                        | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
+| `limit`                                                                                       | *number*                                                                                      | :heavy_minus_sign:                                                                            | N/A                                                                                           |                                                                                               |
+| `customerExternalId`                                                                          | *string*                                                                                      | :heavy_minus_sign:                                                                            | Filter by your internal customer ID                                                           |                                                                                               |
+| `invoiceId`                                                                                   | *string*                                                                                      | :heavy_minus_sign:                                                                            | Filter by invoice ID                                                                          |                                                                                               |
+| `type`                                                                                        | [models.ConversionType](../../models/conversion-type.md)                                      | :heavy_minus_sign:                                                                            | Filter by conversion type                                                                     | lead                                                                                          |
+| `from`                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | ISO 8601 start datetime (inclusive)                                                           |                                                                                               |
+| `to`                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | ISO 8601 end datetime (inclusive)                                                             |                                                                                               |

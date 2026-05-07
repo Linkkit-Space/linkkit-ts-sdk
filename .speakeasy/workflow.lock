@@ -1,0 +1,39 @@
+speakeasyVersion: 1.762.0
+sources:
+    Linkkit API:
+        sourceNamespace: linkkit-api
+        sourceRevisionDigest: sha256:f9e936f4854165ba136f6dc939fdf7b896103057ba5e028d33b3dbdf23f69b46
+        sourceBlobDigest: sha256:5474ea12e78a38d305dbd83af8bc496b61cc09bb1704db1278dc30070c14bb9f
+        tags:
+            - latest
+            - v1
+targets:
+    linkkit:
+        source: Linkkit API
+        sourceNamespace: linkkit-api
+        sourceRevisionDigest: sha256:f9e936f4854165ba136f6dc939fdf7b896103057ba5e028d33b3dbdf23f69b46
+        sourceBlobDigest: sha256:5474ea12e78a38d305dbd83af8bc496b61cc09bb1704db1278dc30070c14bb9f
+        codeSamplesNamespace: linkkit-api-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:23a1389dddbaae4866cbb23e2fc69c4f600286526eef1ecc7ce6ff5982b7ad4c
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Linkkit API:
+            inputs:
+                - location: ../openapi.yaml
+            overlays:
+                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api
+    targets:
+        linkkit:
+            target: typescript
+            source: Linkkit API
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api-typescript-code-samples
+                labelOverride:
+                    fixedValue: Typescript (SDK)
+                blocking: false

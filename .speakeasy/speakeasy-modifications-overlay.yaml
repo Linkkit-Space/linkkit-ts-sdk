@@ -1,0 +1,389 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Speakeasy Modifications
+  version: 0.0.2
+  x-speakeasy-metadata:
+    after: ""
+    before: ""
+    type: speakeasy-modifications
+actions:
+  - target: $["paths"]["/v1/tags/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.tags.delete()
+      before: sdk.Tags.delete_/v1/tags/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/tags/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.tags.get()
+      before: sdk.Tags.get_/v1/tags/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/lists/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.lists.get()
+      before: sdk.Lists.get_/v1/lists/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links/bulk"]["post"]
+    update:
+      x-speakeasy-name-override: bulkCreate
+    x-speakeasy-metadata:
+      after: sdk.links.bulkCreate()
+      before: sdk.Links.post_/v1/links/bulk()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/feeds/clicks.csv"]["get"]
+    update:
+      x-speakeasy-name-override: getClicksCsv
+    x-speakeasy-metadata:
+      after: sdk.exports.getClicksCsv()
+      before: sdk.Exports.get_/feeds/clicks.csv()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/tags"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.tags.create()
+      before: sdk.Tags.post_/v1/tags()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/lists/{id}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.lists.update()
+      before: sdk.Lists.patch_/v1/lists/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links/{shortCode}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.links.update()
+      before: sdk.Links.patch_/v1/links/{shortCode}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/utm-templates/{id}"]["patch"]
+    update:
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.utmTemplates.update()
+      before: sdk.UTM Templates.patch_/v1/utm-templates/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/auth/test"]["get"]
+    update:
+      x-speakeasy-name-override: test
+    x-speakeasy-metadata:
+      after: sdk.authentication.test()
+      before: sdk.Authentication.get_/v1/auth/test()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/conversions"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.conversions.list()
+      before: sdk.Conversions.get_/v1/conversions()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.links.create()
+      before: sdk.Links.post_/v1/links()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links/{shortCode}"]["put"]
+    update:
+      x-speakeasy-name-override: upsert
+    x-speakeasy-metadata:
+      after: sdk.links.upsert()
+      before: sdk.Links.put_/v1/links/{shortCode}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/track/lead"]["post"]
+    update:
+      x-speakeasy-name-override: lead
+    x-speakeasy-metadata:
+      after: sdk.tracking.lead()
+      before: sdk.Tracking.post_/track/lead()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/lists"]["get"]
+    update:
+      x-speakeasy-name-override: getAll
+    x-speakeasy-metadata:
+      after: sdk.lists.getAll()
+      before: sdk.Lists.get_/v1/lists()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/workspaces"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.workspaces.list()
+      before: sdk.Workspaces.get_/v1/workspaces()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/track/sale"]["post"]
+    update:
+      x-speakeasy-name-override: trackSale
+    x-speakeasy-metadata:
+      after: sdk.tracking.trackSale()
+      before: sdk.Tracking.post_/track/sale()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/utm-templates"]["post"]
+    update:
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.utmTemplates.create()
+      before: sdk.UTM Templates.post_/v1/utm-templates()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/health"]["get"]
+    update:
+      x-speakeasy-name-override: healthCheck
+    x-speakeasy-metadata:
+      after: sdk.links.healthCheck()
+      before: sdk.Links.get_/health()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/utm-templates/{id}"]["get"]
+    update:
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.utmTemplates.get()
+      before: sdk.UTM Templates.get_/v1/utm-templates/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/qr-codes/{id}"]["delete"]
+    update:
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.qrCodes.delete()
+      before: sdk.QR Codes.delete_/v1/qr-codes/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/lists/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.lists.delete()
+      before: sdk.Lists.delete_/v1/lists/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/tags/{id}"]["patch"]
+    update:
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.tags.update()
+      before: sdk.Tags.patch_/v1/tags/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links/{shortCode}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.links.get()
+      before: sdk.Links.get_/v1/links/{shortCode}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/analytics/links/{shortCode}"]["get"]
+    update:
+      x-speakeasy-name-override: getLinkEvents
+    x-speakeasy-metadata:
+      after: sdk.analytics.getLinkEvents()
+      before: sdk.Analytics.get_/v1/analytics/links/{shortCode}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/feeds/links.csv"]["get"]
+    update:
+      x-speakeasy-name-override: exportLinksAsCsv
+    x-speakeasy-metadata:
+      after: sdk.exports.exportLinksAsCsv()
+      before: sdk.Exports.get_/feeds/links.csv()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/domains/{id}"]["get"]
+    update:
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.domains.get()
+      before: sdk.Domains.get_/v1/domains/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links/{shortCode}"]["delete"]
+    update:
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.links.delete()
+      before: sdk.Links.delete_/v1/links/{shortCode}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/qr-codes"]["post"]
+    update:
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.qrCodes.create()
+      before: sdk.QR Codes.post_/v1/qr-codes()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/hooks/{id}"]["delete"]
+    update:
+      x-speakeasy-name-override: unsubscribe
+    x-speakeasy-metadata:
+      after: sdk.webhooks.unsubscribe()
+      before: sdk.Webhooks.delete_/v1/hooks/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/hooks"]["post"]
+    update:
+      x-speakeasy-name-override: subscribe
+    x-speakeasy-metadata:
+      after: sdk.webhooks.subscribe()
+      before: sdk.Webhooks.post_/v1/hooks()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/lists"]["post"]
+    update:
+      x-speakeasy-name-override: create
+    x-speakeasy-metadata:
+      after: sdk.lists.create()
+      before: sdk.Lists.post_/v1/lists()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/qr-codes/{id}"]["get"]
+    update:
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: get
+    x-speakeasy-metadata:
+      after: sdk.qrCodes.get()
+      before: sdk.QR Codes.get_/v1/qr-codes/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/utm-templates"]["get"]
+    update:
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.utmTemplates.list()
+      before: sdk.UTM Templates.get_/v1/utm-templates()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/utm-templates/{id}"]["delete"]
+    update:
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: delete
+    x-speakeasy-metadata:
+      after: sdk.utmTemplates.delete()
+      before: sdk.UTM Templates.delete_/v1/utm-templates/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/links"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.links.list()
+      before: sdk.Links.get_/v1/links()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/qr-codes"]["get"]
+    update:
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.qrCodes.list()
+      before: sdk.QR Codes.get_/v1/qr-codes()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/domains"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.domains.list()
+      before: sdk.Domains.get_/v1/domains()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/tags"]["get"]
+    update:
+      x-speakeasy-name-override: list
+    x-speakeasy-metadata:
+      after: sdk.tags.list()
+      before: sdk.Tags.get_/v1/tags()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/analytics/summary"]["get"]
+    update:
+      x-speakeasy-name-override: getSummary
+    x-speakeasy-metadata:
+      after: sdk.analytics.getSummary()
+      before: sdk.Analytics.get_/v1/analytics/summary()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name
+  - target: $["paths"]["/v1/qr-codes/{id}"]["patch"]
+    update:
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: update
+    x-speakeasy-metadata:
+      after: sdk.qrCodes.update()
+      before: sdk.QR Codes.patch_/v1/qr-codes/{id}()
+      created_at: 1778136471968
+      reviewed_at: 1778136494998
+      type: method-name

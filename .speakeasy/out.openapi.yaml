@@ -1,0 +1,2124 @@
+openapi: 3.0.3
+info:
+  title: Linkkit API
+  version: v1
+  description: |
+    The Linkkit API lets you create and manage short links, QR codes, tags, lists,
+    UTM templates, and analytics — all programmatically.
+
+    ## Authentication
+    All `/v1/*` endpoints require authentication. Pass your API key in either header:
+
+    ```
+    Authorization: Bearer <your-api-key>
+    X-Api-Key: <your-api-key>
+    ```
+
+    Supabase JWTs are also accepted for dashboard clients. If you're accessing the API
+    via RapidAPI, authentication is handled automatically by the RapidAPI proxy.
+
+    ## Pagination
+    List endpoints support `?page=` (1-based, default 1) and `?limit=` (default 20, max 100).
+    Responses include a `meta` object with `page`, `limit`, and `total`.
+servers:
+  - url: https://api.uselinkkit.com
+    description: Production
+security:
+  - BearerAuth: []
+  - ApiKeyAuth: []
+x-speakeasy-retries:
+  strategy: backoff
+  backoff:
+    initialInterval: 500
+    maxInterval: 60000
+    maxElapsedTime: 3600000
+    exponent: 1.5
+  statusCodes:
+    - 5XX
+  retryConnectionErrors: true
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Pass your API key as a Bearer token in the Authorization header
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+      description: Pass your API key via the `X-Api-Key` header
+  parameters:
+    PageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+        minimum: 1
+    LimitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 20
+        minimum: 1
+        maximum: 100
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+      required: [error]
+    Meta:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+    MetaTotal:
+      type: object
+      properties:
+        total:
+          type: integer
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        short_code:
+          type: string
+          example: abc123
+        original_url:
+          type: string
+          format: uri
+          example: https://example.com/very-long-path
+        title:
+          type: string
+          nullable: true
+        custom_domain:
+          type: string
+          nullable: true
+          example: go.acme.com
+          description: Custom domain to use for this link instead of the default uselinkkit.com
+        is_active:
+          type: boolean
+        expire_at:
+          type: string
+          format: date-time
+          nullable: true
+        notes:
+          type: string
+          nullable: true
+        list_id:
+          type: string
+          format: uuid
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Domain:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        domain:
+          type: string
+          example: go.acme.com
+        is_verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+    DomainDetail:
+      allOf:
+        - $ref: '#/components/schemas/Domain'
+        - type: object
+          properties:
+            cname_name:
+              type: string
+              nullable: true
+              example: go
+            cname_value:
+              type: string
+              nullable: true
+              example: cname.uselinkkit.com
+            txt_name:
+              type: string
+              nullable: true
+              example: _linkkit.go
+            txt_value:
+              type: string
+              nullable: true
+              example: linkkit-verify=abc123
+    WebhookEvent:
+      type: string
+      enum: [link.created, link.updated, link.deleted, link.clicked]
+      example: link.clicked
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        event:
+          $ref: '#/components/schemas/WebhookEvent'
+        url:
+          type: string
+          format: uri
+          example: https://hooks.zapier.com/hooks/catch/123/abc
+        secret:
+          type: string
+          description: HMAC-SHA256 secret used to verify payloads. Store this securely — it is only returned on creation.
+          example: a3f8c2...
+        is_active:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+    Workspace:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: Acme Inc
+        slug:
+          type: string
+          example: acme-inc
+        color:
+          type: string
+          nullable: true
+          example: '#3B82F6'
+        logo_url:
+          type: string
+          format: uri
+          nullable: true
+        plan:
+          type: string
+          example: pro
+        role:
+          type: string
+          enum: [owner, admin, member]
+          example: owner
+        joined_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+    BulkCreateResult:
+      type: object
+      properties:
+        created:
+          type: integer
+          example: 95
+        skipped:
+          type: integer
+          example: 5
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              url:
+                type: string
+              reason:
+                type: string
+    Tag:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: marketing
+        color:
+          type: string
+          nullable: true
+          example: '#FF5733'
+        created_at:
+          type: string
+          format: date-time
+    TagInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          example: marketing
+        color:
+          type: string
+          nullable: true
+          example: '#FF5733'
+    TagUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+          nullable: true
+    QrCode:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        name:
+          type: string
+          nullable: true
+        color:
+          type: string
+          example: '#000000'
+        show_logo:
+          type: boolean
+        logo_url:
+          type: string
+          format: uri
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+    List:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: Product Hunt Links
+        color:
+          type: string
+          nullable: true
+          example: '#3B82F6'
+        created_at:
+          type: string
+          format: date-time
+    ListInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          example: Product Hunt Links
+        color:
+          type: string
+          nullable: true
+          example: '#3B82F6'
+    ListUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        color:
+          type: string
+          nullable: true
+    UtmTemplate:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: Summer Campaign
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        ref:
+          type: string
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+    Click:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        clicked_at:
+          type: string
+          format: date-time
+        country:
+          type: string
+          nullable: true
+          example: US
+        city:
+          type: string
+          nullable: true
+          example: New York
+        device:
+          type: string
+          nullable: true
+          example: mobile
+        browser:
+          type: string
+          nullable: true
+          example: Chrome
+        os:
+          type: string
+          nullable: true
+          example: iOS
+        referer:
+          type: string
+          nullable: true
+          example: https://twitter.com
+    ConversionType:
+      type: string
+      enum: [lead, sale]
+      example: lead
+    Conversion:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        type:
+          $ref: '#/components/schemas/ConversionType'
+        event_name:
+          type: string
+          example: Lead
+        customer_external_id:
+          type: string
+          example: cus_123
+        customer_name:
+          type: string
+          nullable: true
+        customer_email:
+          type: string
+          format: email
+          nullable: true
+        amount:
+          type: integer
+          nullable: true
+          description: Sale amount in cents
+          example: 4999
+        currency:
+          type: string
+          nullable: true
+          example: usd
+        invoice_id:
+          type: string
+          nullable: true
+        link_id:
+          type: string
+          format: uuid
+          nullable: true
+        click_id:
+          type: string
+          format: uuid
+          nullable: true
+        metadata:
+          type: object
+          nullable: true
+          additionalProperties: true
+        created_at:
+          type: string
+          format: date-time
+        link:
+          nullable: true
+          type: object
+          properties:
+            short_code:
+              type: string
+            title:
+              type: string
+              nullable: true
+            custom_domain:
+              type: string
+              nullable: true
+tags:
+  - name: Links
+    description: Create, retrieve, update, and delete short links.
+  - name: Tags
+    description: Organise links with coloured tags.
+  - name: QR Codes
+    description: Generate and manage QR codes.
+  - name: Analytics
+    description: Click-level analytics and summary statistics.
+  - name: Lists
+    description: Group links into named lists.
+  - name: UTM Templates
+    description: Reusable UTM parameter sets.
+  - name: Conversions
+    description: Track leads and sales, and retrieve conversion records.
+  - name: Tracking
+    description: Public endpoints for recording conversions from your website or app (authenticated via publishable key).
+  - name: Domains
+    description: List and inspect custom domains attached to your workspace.
+  - name: Webhooks
+    description: Subscribe to real-time link events delivered to your endpoint via HTTP POST.
+  - name: Workspaces
+    description: List workspaces the authenticated API key has access to.
+  - name: Authentication
+    description: Validate your API key and inspect the connected account.
+  - name: Exports
+    description: Download links and click data as CSV files — compatible with Excel "From Web" and direct HTTP clients.
+paths:
+  # ── Health ────────────────────────────────────────────────────────────────
+  /health:
+    get:
+      tags: [Links]
+      summary: Health check
+      description: Returns `ok` if the API is up. No authentication required.
+      security: []
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: healthCheck
+  # ── Links ─────────────────────────────────────────────────────────────────
+  /v1/links:
+    get:
+      tags: [Links]
+      summary: List links
+      description: Returns a paginated list of short links, ordered by creation date descending.
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          results: $.data
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+        - name: search
+          in: query
+          description: Filter by URL or title (case-insensitive substring match)
+          schema:
+            type: string
+        - name: list_id
+          in: query
+          description: Filter by list UUID
+          schema:
+            type: string
+            format: uuid
+        - name: is_active
+          in: query
+          description: Filter by active status
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Paginated list of links
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Link'
+                  meta:
+                    $ref: '#/components/schemas/Meta'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: list
+    post:
+      tags: [Links]
+      summary: Create a link
+      description: |
+        Creates a new short link. The URL is screened against a local blocklist,
+        a database blocklist, and Google Safe Browsing before being saved.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [original_url]
+              properties:
+                original_url:
+                  type: string
+                  format: uri
+                  example: https://example.com/very-long-path
+                title:
+                  type: string
+                  nullable: true
+                custom_domain:
+                  type: string
+                  nullable: true
+                  example: go.acme.com
+                expire_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                notes:
+                  type: string
+                  nullable: true
+                list_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        '201':
+          description: Link created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '400':
+          description: Missing or invalid body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Plan limit reached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: URL failed safety checks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: create
+  /v1/links/{shortCode}:
+    put:
+      tags: [Links]
+      summary: Upsert a link
+      description: |
+        Creates a link with the given `shortCode` if it does not exist, or updates it if it does.
+        Useful for idempotent integrations (e.g. Zapier).
+      parameters:
+        - name: shortCode
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [original_url]
+              properties:
+                original_url:
+                  type: string
+                  format: uri
+                  example: https://example.com/very-long-path
+                title:
+                  type: string
+                  nullable: true
+                custom_domain:
+                  type: string
+                  nullable: true
+                  example: go.acme.com
+                is_active:
+                  type: boolean
+                expire_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                notes:
+                  type: string
+                  nullable: true
+                list_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+      responses:
+        '200':
+          description: Link updated (existing)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '201':
+          description: Link created (new)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '400':
+          description: Missing or invalid body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: URL failed safety checks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: upsert
+    get:
+      tags: [Links]
+      summary: Get a link
+      parameters:
+        - name: shortCode
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123
+      responses:
+        '200':
+          description: Link object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '404':
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: get
+    patch:
+      tags: [Links]
+      summary: Update a link
+      description: Partial update — only include fields you want to change.
+      parameters:
+        - name: shortCode
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                original_url:
+                  type: string
+                  format: uri
+                title:
+                  type: string
+                  nullable: true
+                is_active:
+                  type: boolean
+                expire_at:
+                  type: string
+                  format: date-time
+                  nullable: true
+                notes:
+                  type: string
+                  nullable: true
+                list_id:
+                  type: string
+                  format: uuid
+                  nullable: true
+                custom_domain:
+                  type: string
+                  nullable: true
+                  example: go.acme.com
+                short_code:
+                  type: string
+                  minLength: 3
+                  pattern: '^[a-zA-Z0-9_-]+$'
+                  description: Rename the short code. Must be unique, ≥ 3 chars, alphanumeric plus hyphens/underscores.
+      responses:
+        '200':
+          description: Updated link
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '404':
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: short_code already taken
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Validation error or URL failed safety checks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: update
+    delete:
+      tags: [Links]
+      summary: Delete a link
+      parameters:
+        - name: shortCode
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Link deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+                    example: true
+        '404':
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: delete
+  # ── Tags ──────────────────────────────────────────────────────────────────
+  /v1/tags:
+    get:
+      tags: [Tags]
+      summary: List tags
+      responses:
+        '200':
+          description: All tags ordered by name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Tag'
+                  meta:
+                    $ref: '#/components/schemas/MetaTotal'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: list
+    post:
+      tags: [Tags]
+      summary: Create a tag
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagInput'
+      responses:
+        '201':
+          description: Tag created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '400':
+          description: name is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: create
+  /v1/tags/{id}:
+    get:
+      tags: [Tags]
+      summary: Get a tag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Tag object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: get
+    patch:
+      tags: [Tags]
+      summary: Update a tag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagUpdate'
+      responses:
+        '200':
+          description: Updated tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: update
+    delete:
+      tags: [Tags]
+      summary: Delete a tag
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Tag deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+        '404':
+          description: Tag not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: delete
+  # ── QR Codes ──────────────────────────────────────────────────────────────
+  /v1/qr-codes:
+    get:
+      tags: [QR Codes]
+      summary: List QR codes
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          results: $.data
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: Paginated list of QR codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/QrCode'
+                  meta:
+                    $ref: '#/components/schemas/Meta'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: list
+    post:
+      tags: [QR Codes]
+      summary: Create a QR code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [url]
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  example: https://uselinkkit.com/abc123
+                name:
+                  type: string
+                  nullable: true
+                color:
+                  type: string
+                  default: '#000000'
+                  example: '#1D4ED8'
+                show_logo:
+                  type: boolean
+                  default: false
+                logo_url:
+                  type: string
+                  format: uri
+                  nullable: true
+      responses:
+        '201':
+          description: QR code created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '400':
+          description: url is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: create
+  /v1/qr-codes/{id}:
+    get:
+      tags: [QR Codes]
+      summary: Get a QR code
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: QR code object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '404':
+          description: QR code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: get
+    patch:
+      tags: [QR Codes]
+      summary: Update a QR code
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+                name:
+                  type: string
+                  nullable: true
+                color:
+                  type: string
+                show_logo:
+                  type: boolean
+                logo_url:
+                  type: string
+                  format: uri
+                  nullable: true
+      responses:
+        '200':
+          description: Updated QR code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QrCode'
+        '404':
+          description: QR code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: update
+    delete:
+      tags: [QR Codes]
+      summary: Delete a QR code
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: QR code deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+        '404':
+          description: QR code not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: qrCodes
+      x-speakeasy-name-override: delete
+  # ── Analytics ─────────────────────────────────────────────────────────────
+  /v1/analytics/summary:
+    get:
+      tags: [Analytics]
+      summary: Summary statistics
+      description: Returns total link count and total click count, optionally filtered by a date range.
+      parameters:
+        - name: from
+          in: query
+          description: ISO 8601 start datetime (inclusive)
+          schema:
+            type: string
+            format: date-time
+            example: '2024-01-01T00:00:00Z'
+        - name: to
+          in: query
+          description: ISO 8601 end datetime (inclusive)
+          schema:
+            type: string
+            format: date-time
+            example: '2024-12-31T23:59:59Z'
+      responses:
+        '200':
+          description: Summary stats
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_links:
+                    type: integer
+                    example: 142
+                  total_clicks:
+                    type: integer
+                    example: 8531
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: getSummary
+  /v1/analytics/links/{shortCode}:
+    get:
+      tags: [Analytics]
+      summary: Click events for a link
+      description: Returns paginated click events for a specific short link, with device, geo, and referrer breakdown.
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          results: $.data
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+        - name: shortCode
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Paginated click events
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Click'
+                  meta:
+                    $ref: '#/components/schemas/Meta'
+        '404':
+          description: Link not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: getLinkEvents
+  # ── Lists ─────────────────────────────────────────────────────────────────
+  /v1/lists:
+    get:
+      tags: [Lists]
+      summary: List all lists
+      responses:
+        '200':
+          description: All lists ordered by name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/List'
+                  meta:
+                    $ref: '#/components/schemas/MetaTotal'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: getAll
+    post:
+      tags: [Lists]
+      summary: Create a list
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListInput'
+      responses:
+        '201':
+          description: List created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+        '400':
+          description: name is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: create
+  /v1/lists/{id}:
+    get:
+      tags: [Lists]
+      summary: Get a list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+        '404':
+          description: List not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: get
+    patch:
+      tags: [Lists]
+      summary: Update a list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListUpdate'
+      responses:
+        '200':
+          description: Updated list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/List'
+        '404':
+          description: List not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: update
+    delete:
+      tags: [Lists]
+      summary: Delete a list
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: List deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+        '404':
+          description: List not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: delete
+  # ── UTM Templates ─────────────────────────────────────────────────────────
+  /v1/utm-templates:
+    get:
+      tags: [UTM Templates]
+      summary: List UTM templates
+      responses:
+        '200':
+          description: All UTM templates ordered by name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UtmTemplate'
+                  meta:
+                    $ref: '#/components/schemas/MetaTotal'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: list
+    post:
+      tags: [UTM Templates]
+      summary: Create a UTM template
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                  example: Summer Campaign
+                utm_source:
+                  type: string
+                  nullable: true
+                  example: newsletter
+                utm_medium:
+                  type: string
+                  nullable: true
+                  example: email
+                utm_campaign:
+                  type: string
+                  nullable: true
+                  example: summer-sale
+                utm_term:
+                  type: string
+                  nullable: true
+                utm_content:
+                  type: string
+                  nullable: true
+                ref:
+                  type: string
+                  nullable: true
+      responses:
+        '201':
+          description: UTM template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtmTemplate'
+        '400':
+          description: name is required
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: create
+  /v1/utm-templates/{id}:
+    get:
+      tags: [UTM Templates]
+      summary: Get a UTM template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: UTM template object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtmTemplate'
+        '404':
+          description: UTM template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: get
+    patch:
+      tags: [UTM Templates]
+      summary: Update a UTM template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                utm_source:
+                  type: string
+                  nullable: true
+                utm_medium:
+                  type: string
+                  nullable: true
+                utm_campaign:
+                  type: string
+                  nullable: true
+                utm_term:
+                  type: string
+                  nullable: true
+                utm_content:
+                  type: string
+                  nullable: true
+                ref:
+                  type: string
+                  nullable: true
+      responses:
+        '200':
+          description: Updated UTM template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtmTemplate'
+        '404':
+          description: UTM template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: update
+    delete:
+      tags: [UTM Templates]
+      summary: Delete a UTM template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: UTM template deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deleted:
+                    type: boolean
+        '404':
+          description: UTM template not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-group: utmTemplates
+      x-speakeasy-name-override: delete
+  # ── Conversions ────────────────────────────────────────────────────────────
+  /v1/conversions:
+    get:
+      tags: [Conversions]
+      summary: List conversions
+      description: Returns a paginated list of conversion events (leads and sales), ordered by creation date descending.
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          results: $.data
+      parameters:
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+        - name: customer_external_id
+          in: query
+          description: Filter by your internal customer ID
+          schema:
+            type: string
+        - name: invoice_id
+          in: query
+          description: Filter by invoice ID
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by conversion type
+          schema:
+            $ref: '#/components/schemas/ConversionType'
+        - name: from
+          in: query
+          description: ISO 8601 start datetime (inclusive)
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          description: ISO 8601 end datetime (inclusive)
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Paginated list of conversions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Conversion'
+                  meta:
+                    $ref: '#/components/schemas/Meta'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: list
+  # ── Tracking (public) ──────────────────────────────────────────────────────
+  /track/lead:
+    post:
+      tags: [Tracking]
+      summary: Track a lead
+      description: |
+        Records a lead conversion event. Authenticated via a publishable key (not an API key).
+        Pass `lkclid` (the Linkkit click ID from the `?lkclid=` query parameter appended to your
+        short link) to attribute the lead to a specific click.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [publishable_key, customer_external_id]
+              properties:
+                publishable_key:
+                  type: string
+                  description: Your Linkkit publishable key (starts with `pk_`)
+                  example: pk_live_abc123
+                lkclid:
+                  type: string
+                  format: uuid
+                  description: Linkkit click ID for attribution (optional)
+                  nullable: true
+                customer_external_id:
+                  type: string
+                  description: Your internal identifier for this customer
+                  example: cus_123
+                event_name:
+                  type: string
+                  description: Custom event name (defaults to "Lead")
+                  example: Trial Started
+                customer_name:
+                  type: string
+                  nullable: true
+                customer_email:
+                  type: string
+                  format: email
+                  nullable: true
+                metadata:
+                  type: object
+                  nullable: true
+                  additionalProperties: true
+      responses:
+        '201':
+          description: Lead recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversion'
+        '400':
+          description: Missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid or unauthorized publishable key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: lead
+  /track/sale:
+    post:
+      tags: [Tracking]
+      summary: Track a sale
+      description: |
+        Records a sale conversion event. Authenticated via a publishable key (not an API key).
+        Pass `lkclid` (the Linkkit click ID) to attribute the sale to a specific click.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [publishable_key, customer_external_id, amount]
+              properties:
+                publishable_key:
+                  type: string
+                  description: Your Linkkit publishable key (starts with `pk_`)
+                  example: pk_live_abc123
+                lkclid:
+                  type: string
+                  format: uuid
+                  description: Linkkit click ID for attribution (optional)
+                  nullable: true
+                customer_external_id:
+                  type: string
+                  description: Your internal identifier for this customer
+                  example: cus_123
+                customer_name:
+                  type: string
+                  nullable: true
+                customer_email:
+                  type: string
+                  format: email
+                  nullable: true
+                amount:
+                  type: integer
+                  description: Sale amount in cents
+                  example: 4999
+                currency:
+                  type: string
+                  description: ISO 4217 currency code (defaults to "usd")
+                  example: usd
+                payment_processor:
+                  type: string
+                  nullable: true
+                  example: stripe
+                invoice_id:
+                  type: string
+                  nullable: true
+                  example: inv_abc123
+                metadata:
+                  type: object
+                  nullable: true
+                  additionalProperties: true
+      responses:
+        '201':
+          description: Sale recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversion'
+        '400':
+          description: Missing required fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid or unauthorized publishable key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: trackSale
+  # ── Bulk Links ────────────────────────────────────────────────────────────
+  /v1/links/bulk:
+    post:
+      tags: [Links]
+      summary: Bulk create links
+      description: |
+        Creates up to 1,000 short links in a single request. Each link is screened
+        against safety checks. Links that fail are skipped and reported in `errors`.
+        The response is `201` even when some links are skipped.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [links]
+              properties:
+                links:
+                  type: array
+                  maxItems: 1000
+                  items:
+                    type: object
+                    required: [original_url]
+                    properties:
+                      original_url:
+                        type: string
+                        format: uri
+                      title:
+                        type: string
+                        nullable: true
+                      notes:
+                        type: string
+                        nullable: true
+                      custom_domain:
+                        type: string
+                        nullable: true
+      responses:
+        '201':
+          description: Bulk result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkCreateResult'
+        '400':
+          description: links array missing or empty
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Plan limit would be exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: bulkCreate
+  # ── Domains ───────────────────────────────────────────────────────────────
+  /v1/domains:
+    get:
+      tags: [Domains]
+      summary: List domains
+      description: Returns all custom domains attached to the workspace, ordered by creation date descending.
+      responses:
+        '200':
+          description: List of domains
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Domain'
+                  meta:
+                    $ref: '#/components/schemas/MetaTotal'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: list
+  /v1/domains/{id}:
+    get:
+      tags: [Domains]
+      summary: Get a domain
+      description: Returns a single domain including DNS verification records.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Domain detail with DNS records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainDetail'
+        '404':
+          description: Domain not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: get
+  # ── Webhooks ──────────────────────────────────────────────────────────────
+  /v1/hooks:
+    post:
+      tags: [Webhooks]
+      summary: Subscribe to an event
+      description: |
+        Creates a webhook subscription. Linkkit will POST to `target_url` whenever
+        the specified event occurs. The response includes a `secret` for verifying
+        the `X-Linkkit-Signature` HMAC-SHA256 header. Store it securely — returned once only.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [event, target_url]
+              properties:
+                event:
+                  $ref: '#/components/schemas/WebhookEvent'
+                target_url:
+                  type: string
+                  format: uri
+                  example: https://hooks.zapier.com/hooks/catch/123/abc
+      responses:
+        '201':
+          description: Webhook created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          description: Missing or invalid fields
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: subscribe
+  /v1/hooks/{id}:
+    delete:
+      tags: [Webhooks]
+      summary: Unsubscribe
+      description: Deletes a webhook subscription.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Webhook deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unsubscribed:
+                    type: boolean
+                    example: true
+        '404':
+          description: Webhook not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: An unexpected error occurred
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: unsubscribe
+  # ── Workspaces ────────────────────────────────────────────────────────────
+  /v1/workspaces:
+    get:
+      tags: [Workspaces]
+      summary: List workspaces
+      description: Returns all workspaces the API key belongs to, including the caller's role in each.
+      responses:
+        '200':
+          description: List of workspaces
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Workspace'
+                  meta:
+                    $ref: '#/components/schemas/MetaTotal'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: list
+  # ── Authentication ────────────────────────────────────────────────────────
+  /v1/auth/test:
+    get:
+      tags: [Authentication]
+      summary: Validate API key
+      description: Validates the API key and returns the connected account details. Useful for verifying credentials during SDK setup.
+      responses:
+        '200':
+          description: API key is valid
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: string
+                    format: uuid
+                  workspace_id:
+                    type: string
+                    format: uuid
+                    nullable: true
+                  email:
+                    type: string
+                    format: email
+                    nullable: true
+                  name:
+                    type: string
+                    nullable: true
+        '401':
+          description: Invalid or missing API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      x-speakeasy-name-override: test
+  # ── Exports (CSV feeds) ───────────────────────────────────────────────────
+  /feeds/links.csv:
+    get:
+      tags: [Exports]
+      summary: Export links as CSV
+      description: |
+        Downloads all links as a CSV file. Authenticate via `?api_key=` query param
+        (compatible with Excel "From Web") or via standard `Authorization`/`X-Api-Key` headers.
+      security: []
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          schema:
+            type: string
+        - name: list_id
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: is_active
+          in: query
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: 'CSV — columns: Short Code, Original URL, Title, Active, Custom Domain, Expires At, Notes, List ID, Created At, Updated At'
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+      x-speakeasy-name-override: exportLinksAsCsv
+  /feeds/clicks.csv:
+    get:
+      tags: [Exports]
+      summary: Export clicks as CSV
+      description: Downloads click events for a specific short link as CSV.
+      security: []
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: short_code
+          in: query
+          required: true
+          schema:
+            type: string
+            example: abc123
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: 'CSV — columns: Short Code, Clicked At, Country, City, Device, Browser, OS, Referer'
+          content:
+            text/csv:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: short_code is required
+        '401':
+          description: Unauthorized
+        '404':
+          description: Link not found
+      x-speakeasy-name-override: getClicksCsv
