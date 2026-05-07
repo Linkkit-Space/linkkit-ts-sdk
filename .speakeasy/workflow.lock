@@ -2,8 +2,8 @@ speakeasyVersion: 1.762.0
 sources:
     Linkkit API:
         sourceNamespace: linkkit-api
-        sourceRevisionDigest: sha256:f9e936f4854165ba136f6dc939fdf7b896103057ba5e028d33b3dbdf23f69b46
-        sourceBlobDigest: sha256:5474ea12e78a38d305dbd83af8bc496b61cc09bb1704db1278dc30070c14bb9f
+        sourceRevisionDigest: sha256:20aad36038e60ef60c8df4e95b973fd542da777c12c97c7550eb3571cbf6ec5b
+        sourceBlobDigest: sha256:64b37849e4dfbc4b4eb481e7be1708dd59992d8cdcc5a653143f26cb15b81798
         tags:
             - latest
             - v1
@@ -11,19 +11,17 @@ targets:
     linkkit:
         source: Linkkit API
         sourceNamespace: linkkit-api
-        sourceRevisionDigest: sha256:f9e936f4854165ba136f6dc939fdf7b896103057ba5e028d33b3dbdf23f69b46
-        sourceBlobDigest: sha256:5474ea12e78a38d305dbd83af8bc496b61cc09bb1704db1278dc30070c14bb9f
+        sourceRevisionDigest: sha256:20aad36038e60ef60c8df4e95b973fd542da777c12c97c7550eb3571cbf6ec5b
+        sourceBlobDigest: sha256:64b37849e4dfbc4b4eb481e7be1708dd59992d8cdcc5a653143f26cb15b81798
         codeSamplesNamespace: linkkit-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:23a1389dddbaae4866cbb23e2fc69c4f600286526eef1ecc7ce6ff5982b7ad4c
+        codeSamplesRevisionDigest: sha256:042fb9c6c4c1872aeb86fb8bff220a015d90436464b2a768437ddfe6ec3a2c67
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         Linkkit API:
             inputs:
-                - location: ../openapi.yaml
-            overlays:
-                - location: .speakeasy/speakeasy-modifications-overlay.yaml
+                - location: .speakeasy/out.openapi.yaml
             output: .speakeasy/out.openapi.yaml
             registry:
                 location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api

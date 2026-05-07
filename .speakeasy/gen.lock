@@ -5,12 +5,14 @@ management:
   docVersion: v1
   speakeasyVersion: 1.762.0
   generationVersion: 2.882.0
-  releaseVersion: 0.2.2
-  configChecksum: 1eb0d56211ddeeae0b53c96f2f26bb67
+  releaseVersion: 0.2.3
+  configChecksum: acaedcf0490011085790c05df0ffa50e
+  repoURL: https://github.com/Linkkit-Space/linkkit-ts-sdk.git
+  installationURL: https://github.com/Linkkit-Space/linkkit-ts-sdk
 persistentEdits:
-  generation_id: abbd8516-30ec-4f67-abe0-835dfae3f0c0
-  pristine_commit_hash: e4ab3307123234bfb38b2e323fa8e82c8debd4e4
-  pristine_tree_hash: d9385ba89a92c3c88d48eb5c4729db3044c80a63
+  generation_id: 8740a392-f11d-4cc1-b462-eb0f5a0a6197
+  pristine_commit_hash: fbe1fc9d52418a2f5000846ef14457ed81206110
+  pristine_tree_hash: 65dfd402e888f546c093460160163de112843aa6
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -35,8 +37,8 @@ features:
 trackedFiles:
   .devcontainer/README.md:
     id: b170c0f184ac
-    last_write_checksum: sha1:b6564d2a7c8ae764fff6d1b4666dcd787210a000
-    pristine_git_object: cdef18c30e383534a868742e1b9148f2670606f9
+    last_write_checksum: sha1:1977ac9b640994ce33f277a3b3902b480a5741d0
+    pristine_git_object: b593cc3a6b84c6cdcc439a40186e29e433364190
   .devcontainer/devcontainer.json:
     id: b34062a34eb1
     last_write_checksum: sha1:d0b15193202c961e7d1875864ddb15f9d17c84dd
@@ -511,12 +513,12 @@ trackedFiles:
     pristine_git_object: 86ebfcb51b07eed4ad7fb3b698a14e3a539787d7
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:e2505ab5e75c5546a33bc019bb3e48b1150ac05a
-    pristine_git_object: c39cb271c33ace5fe48d773a9231d2bba1067f2e
+    last_write_checksum: sha1:373f6cb377aafd3717ab4aba03da5373a40058fc
+    pristine_git_object: f4f99aa397a9e1999da53f355d713a10e22b1be4
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:a6efa3825712c2617747f4fc978c2109db401399
-    pristine_git_object: 13b3521dd0e3bac147a33eefbe0c9707ab28df40
+    last_write_checksum: sha1:0480dcec8baf8b8d449274933f7574eadfbc711d
+    pristine_git_object: 6e1715e0cdded6579c70928258002f5aae992b00
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:ee26b494584c1219fac1b34cbb831e86738216cd
@@ -707,8 +709,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:4465f6311f1456bb3962b0905eba8d14223549b6
-    pristine_git_object: f593cb03e71373317fbf520bc6df115683f8f733
+    last_write_checksum: sha1:0daa398317602eeed19291860f9efde619f2343a
+    pristine_git_object: fd879f1288e5653e9c21f77c17b6f198a498675b
   src/lib/dlv.ts:
     id: b1988214835a
     last_write_checksum: sha1:1dd3e3fbb4550c4bf31f5ef997faff355d6f3250
@@ -1572,3 +1574,87 @@ examples:
         "200":
           text/csv: "x-file: example.file"
 examplesVersion: 1.0.2
+releaseNotes: |
+  ## Typescript SDK Changes:
+  * `linkkit.links.healthCheck()`: **Added**
+  * `linkkit.links.list()`: **Added**
+  * `linkkit.links.create()`: **Added**
+  * `linkkit.links.upsert()`: **Added**
+  * `linkkit.links.get()`: **Added**
+  * `linkkit.links.update()`: **Added**
+  * `linkkit.links.delete()`: **Added**
+  * `linkkit.links.bulkCreate()`: **Added**
+  * `linkkit.tags.list()`: **Added**
+  * `linkkit.tags.create()`: **Added**
+  * `linkkit.tags.get()`: **Added**
+  * `linkkit.tags.update()`: **Added**
+  * `linkkit.tags.delete()`: **Added**
+  * `linkkit.qrCodes.list()`: **Added**
+  * `linkkit.qrCodes.create()`: **Added**
+  * `linkkit.qrCodes.get()`: **Added**
+  * `linkkit.qrCodes.update()`: **Added**
+  * `linkkit.qrCodes.delete()`: **Added**
+  * `linkkit.analytics.getSummary()`: **Added**
+  * `linkkit.analytics.getLinkEvents()`: **Added**
+  * `linkkit.lists.getAll()`: **Added**
+  * `linkkit.lists.create()`: **Added**
+  * `linkkit.lists.get()`: **Added**
+  * `linkkit.lists.update()`: **Added**
+  * `linkkit.lists.delete()`: **Added**
+  * `linkkit.utmTemplates.list()`: **Added**
+  * `linkkit.utmTemplates.create()`: **Added**
+  * `linkkit.utmTemplates.get()`: **Added**
+  * `linkkit.utmTemplates.update()`: **Added**
+  * `linkkit.utmTemplates.delete()`: **Added**
+  * `linkkit.conversions.list()`: **Added**
+  * `linkkit.tracking.lead()`: **Added**
+  * `linkkit.tracking.trackSale()`: **Added**
+  * `linkkit.domains.list()`: **Added**
+  * `linkkit.domains.get()`: **Added**
+  * `linkkit.webhooks.subscribe()`: **Added**
+  * `linkkit.webhooks.unsubscribe()`: **Added**
+  * `linkkit.workspaces.list()`: **Added**
+  * `linkkit.authentication.test()`: **Added**
+  * `linkkit.exports.exportLinksAsCsv()`: **Added**
+  * `linkkit.exports.getClicksCsv()`: **Added**
+  * `linkkit.links.get/health()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.get/v1/links()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.post/v1/links()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.put/v1/links/{shortCode}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.get/v1/links/{shortCode}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.patch/v1/links/{shortCode}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.delete/v1/links/{shortCode}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.links.post/v1/links/bulk()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tags.get/v1/tags()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tags.post/v1/tags()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tags.get/v1/tags/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tags.patch/v1/tags/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tags.delete/v1/tags/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.qrCodes.get/v1/qrCodes()`: **Removed** (Breaking ⚠️)
+  * `linkkit.qrCodes.post/v1/qrCodes()`: **Removed** (Breaking ⚠️)
+  * `linkkit.qrCodes.get/v1/qrCodes/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.qrCodes.patch/v1/qrCodes/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.qrCodes.delete/v1/qrCodes/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.analytics.get/v1/analytics/summary()`: **Removed** (Breaking ⚠️)
+  * `linkkit.analytics.get/v1/analytics/links/{shortCode}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.lists.get/v1/lists()`: **Removed** (Breaking ⚠️)
+  * `linkkit.lists.post/v1/lists()`: **Removed** (Breaking ⚠️)
+  * `linkkit.lists.get/v1/lists/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.lists.patch/v1/lists/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.lists.delete/v1/lists/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.utmTemplates.get/v1/utmTemplates()`: **Removed** (Breaking ⚠️)
+  * `linkkit.utmTemplates.post/v1/utmTemplates()`: **Removed** (Breaking ⚠️)
+  * `linkkit.utmTemplates.get/v1/utmTemplates/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.utmTemplates.patch/v1/utmTemplates/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.utmTemplates.delete/v1/utmTemplates/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.conversions.get/v1/conversions()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tracking.post/track/lead()`: **Removed** (Breaking ⚠️)
+  * `linkkit.tracking.post/track/sale()`: **Removed** (Breaking ⚠️)
+  * `linkkit.domains.get/v1/domains()`: **Removed** (Breaking ⚠️)
+  * `linkkit.domains.get/v1/domains/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.webhooks.post/v1/hooks()`: **Removed** (Breaking ⚠️)
+  * `linkkit.webhooks.delete/v1/hooks/{id}()`: **Removed** (Breaking ⚠️)
+  * `linkkit.workspaces.get/v1/workspaces()`: **Removed** (Breaking ⚠️)
+  * `linkkit.authentication.get/v1/auth/test()`: **Removed** (Breaking ⚠️)
+  * `linkkit.exports.get/feeds/links.csv()`: **Removed** (Breaking ⚠️)
+  * `linkkit.exports.get/feeds/clicks.csv()`: **Removed** (Breaking ⚠️)

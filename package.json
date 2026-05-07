@@ -1,6 +1,6 @@
 {
   "name": "linkkit",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Speakeasy",
   "type": "module",
   "main": "./esm/index.js",
@@ -43,6 +43,10 @@
     }
   },
   "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Linkkit-Space/linkkit-ts-sdk.git"
+  },
   "scripts": {
     "lint": "oxlint --max-warnings=0 --deny-warnings src/**/*.ts src/**/*.tsx",
     "build": "tsgo",
