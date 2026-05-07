@@ -55,30 +55,34 @@ Responses include a `meta` object with `page`, `limit`, and `total`.
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
+> [!TIP]
+> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
+
+
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add linkkit
+npm add https://github.com/Linkkit-Space/linkkit-ts-sdk
 ```
 
 ### PNPM
 
 ```bash
-pnpm add linkkit
+pnpm add https://github.com/Linkkit-Space/linkkit-ts-sdk
 ```
 
 ### Bun
 
 ```bash
-bun add linkkit
+bun add https://github.com/Linkkit-Space/linkkit-ts-sdk
 ```
 
 ### Yarn
 
 ```bash
-yarn add linkkit
+yarn add https://github.com/Linkkit-Space/linkkit-ts-sdk
 ```
 
 > [!NOTE]
