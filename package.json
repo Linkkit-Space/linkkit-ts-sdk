@@ -16,6 +16,11 @@
       "types": "./esm/types/index.d.ts",
       "default": "./esm/types/index.js"
     },
+    "./react": {
+      "source": "./src/react.tsx",
+      "types": "./esm/react.d.ts",
+      "default": "./esm/react.js"
+    },
     "./models/errors": {
       "source": "./src/models/errors/index.ts",
       "types": "./esm/models/errors/index.d.ts",
@@ -56,12 +61,13 @@
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {
-    
+    "react": ">=18"
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260302.1",
     "oxlint": "^1.60.0",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "@types/react": "^18.3.0"
   },
   "dependencies": {
     "zod": "^3.25.65 || ^4.0.0"
