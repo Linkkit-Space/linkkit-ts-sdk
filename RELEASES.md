@@ -27,3 +27,13 @@ Based on:
 - [typescript v0.2.5] .
 ### Releases
 - [NPM v0.2.5] https://www.npmjs.com/package/@getlinkkit/linkkit/v/0.2.5 - .
+
+## 2026-08-14 07:48:28
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.793.2 (2.928.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.2.4] .
+### Releases
+- [NPM v0.2.4] https://www.npmjs.com/package/@getlinkkit/linkkit/v/0.2.4 - .
