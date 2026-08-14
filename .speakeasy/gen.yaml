@@ -38,8 +38,11 @@ typescript:
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
-    devDependencies: {}
-    peerDependencies: {}
+    devDependencies:
+      react: ^18.3.1
+      "@types/react": ^18.3.0
+    peerDependencies:
+      react: ">=18"
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
