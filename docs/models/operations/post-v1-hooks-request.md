@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV1HooksRequest } from "linkkit/models/operations";
+import { PostV1HooksRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PostV1HooksRequest = {
   event: "link.clicked",

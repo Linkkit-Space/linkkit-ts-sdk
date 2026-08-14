@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV1TagsIdRequest } from "linkkit/models/operations";
+import { GetV1TagsIdRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1TagsIdRequest = {
   id: "e30b6a7e-83d3-465c-b661-83acd6bd587b",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV1UtmTemplatesRequest } from "linkkit/models/operations";
+import { PostV1UtmTemplatesRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PostV1UtmTemplatesRequest = {
   name: "Summer Campaign",

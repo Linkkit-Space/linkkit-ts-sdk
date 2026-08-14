@@ -5,7 +5,7 @@ All lists ordered by name
 ## Example Usage
 
 ```typescript
-import { GetV1ListsResponseBody } from "linkkit/models/operations";
+import { GetV1ListsResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1ListsResponseBody = {
   data: [

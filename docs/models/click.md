@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Click } from "linkkit/models";
+import { Click } from "@getlinkkit/linkkit/models";
 
 let value: Click = {
   country: "US",

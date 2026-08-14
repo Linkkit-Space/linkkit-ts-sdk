@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Role } from "linkkit/models";
+import { Role } from "@getlinkkit/linkkit/models";
 
 let value: Role = "owner";
 

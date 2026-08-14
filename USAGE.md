@@ -1,6 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 

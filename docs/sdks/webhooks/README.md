@@ -20,7 +20,7 @@ the `X-Linkkit-Signature` HMAC-SHA256 header. Store it securely — returned onc
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/hooks" method="post" path="/v1/hooks" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -45,8 +45,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { webhooksSubscribe } from "linkkit/funcs/webhooks-subscribe.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { webhooksSubscribe } from "@getlinkkit/linkkit/funcs/webhooks-subscribe.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -100,7 +100,7 @@ Deletes a webhook subscription.
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/hooks/{id}" method="delete" path="/v1/hooks/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -124,8 +124,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { webhooksUnsubscribe } from "linkkit/funcs/webhooks-unsubscribe.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { webhooksUnsubscribe } from "@getlinkkit/linkkit/funcs/webhooks-unsubscribe.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -17,7 +17,7 @@ Returns all custom domains attached to the workspace, ordered by creation date d
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/domains" method="get" path="/v1/domains" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -39,8 +39,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { domainsList } from "linkkit/funcs/domains-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { domainsList } from "@getlinkkit/linkkit/funcs/domains-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -90,7 +90,7 @@ Returns a single domain including DNS verification records.
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/domains/{id}" method="get" path="/v1/domains/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -114,8 +114,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { domainsGet } from "linkkit/funcs/domains-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { domainsGet } from "@getlinkkit/linkkit/funcs/domains-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

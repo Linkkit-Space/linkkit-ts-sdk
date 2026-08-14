@@ -5,7 +5,7 @@ Paginated list of QR codes
 ## Example Usage
 
 ```typescript
-import { GetV1QrCodesResponseBody } from "linkkit/models/operations";
+import { GetV1QrCodesResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1QrCodesResponseBody = {
   data: [

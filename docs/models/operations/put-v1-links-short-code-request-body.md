@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PutV1LinksShortCodeRequestBody } from "linkkit/models/operations";
+import { PutV1LinksShortCodeRequestBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: PutV1LinksShortCodeRequestBody = {
   originalUrl: "https://example.com/very-long-path",

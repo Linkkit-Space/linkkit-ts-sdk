@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { MetaTotal } from "linkkit/models";
+import { MetaTotal } from "@getlinkkit/linkkit/models";
 
 let value: MetaTotal = {};
 ```

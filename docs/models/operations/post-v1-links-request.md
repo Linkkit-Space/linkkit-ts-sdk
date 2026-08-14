@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV1LinksRequest } from "linkkit/models/operations";
+import { PostV1LinksRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PostV1LinksRequest = {
   originalUrl: "https://example.com/very-long-path",

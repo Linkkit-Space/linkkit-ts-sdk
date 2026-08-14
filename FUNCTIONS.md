@@ -19,8 +19,8 @@ specific category of applications.
 ## Example
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksHealthCheck } from "linkkit/funcs/links-health-check.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksHealthCheck } from "@getlinkkit/linkkit/funcs/links-health-check.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -16,7 +16,7 @@ Validates the API key and returns the connected account details. Useful for veri
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/auth/test" method="get" path="/v1/auth/test" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -38,8 +38,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { authenticationTest } from "linkkit/funcs/authentication-test.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { authenticationTest } from "@getlinkkit/linkkit/funcs/authentication-test.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

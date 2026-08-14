@@ -16,7 +16,7 @@ Returns a paginated list of conversion events (leads and sales), ordered by crea
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/conversions" method="get" path="/v1/conversions" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { conversionsList } from "linkkit/funcs/conversions-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { conversionsList } from "@getlinkkit/linkkit/funcs/conversions-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

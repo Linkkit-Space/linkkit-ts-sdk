@@ -20,7 +20,7 @@ List tags
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/tags" method="get" path="/v1/tags" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { tagsList } from "linkkit/funcs/tags-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { tagsList } from "@getlinkkit/linkkit/funcs/tags-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -93,7 +93,7 @@ Create a tag
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/tags" method="post" path="/v1/tags" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -118,8 +118,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { tagsCreate } from "linkkit/funcs/tags-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { tagsCreate } from "@getlinkkit/linkkit/funcs/tags-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -173,7 +173,7 @@ Get a tag
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/tags/{id}" method="get" path="/v1/tags/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -197,8 +197,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { tagsGet } from "linkkit/funcs/tags-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { tagsGet } from "@getlinkkit/linkkit/funcs/tags-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -251,7 +251,7 @@ Update a tag
 
 <!-- UsageSnippet language="typescript" operationID="patch_/v1/tags/{id}" method="patch" path="/v1/tags/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -276,8 +276,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { tagsUpdate } from "linkkit/funcs/tags-update.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { tagsUpdate } from "@getlinkkit/linkkit/funcs/tags-update.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -331,7 +331,7 @@ Delete a tag
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/tags/{id}" method="delete" path="/v1/tags/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -355,8 +355,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { tagsDelete } from "linkkit/funcs/tags-delete.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { tagsDelete } from "@getlinkkit/linkkit/funcs/tags-delete.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Webhook } from "linkkit/models";
+import { Webhook } from "@getlinkkit/linkkit/models";
 
 let value: Webhook = {
   event: "link.clicked",

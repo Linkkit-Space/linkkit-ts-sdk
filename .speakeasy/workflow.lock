@@ -1,4 +1,4 @@
-speakeasyVersion: 1.762.0
+speakeasyVersion: 1.793.2
 sources:
     Linkkit API:
         sourceNamespace: linkkit-api
@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:20aad36038e60ef60c8df4e95b973fd542da777c12c97c7550eb3571cbf6ec5b
         sourceBlobDigest: sha256:64b37849e4dfbc4b4eb481e7be1708dd59992d8cdcc5a653143f26cb15b81798
         codeSamplesNamespace: linkkit-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:042fb9c6c4c1872aeb86fb8bff220a015d90436464b2a768437ddfe6ec3a2c67
+        codeSamplesRevisionDigest: sha256:8bd9b203b432c5a924eaf953bea0ab36228610ace452e69358885b97ca6fb808
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -29,6 +29,9 @@ workflow:
         linkkit:
             target: typescript
             source: Linkkit API
+            publish:
+                npm:
+                    token: $npm_token
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/linkkit/linkkit/linkkit-api-typescript-code-samples

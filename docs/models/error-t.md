@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ErrorT } from "linkkit/models";
+import { ErrorT } from "@getlinkkit/linkkit/models";
 
 let value: ErrorT = {
   error: "<value>",

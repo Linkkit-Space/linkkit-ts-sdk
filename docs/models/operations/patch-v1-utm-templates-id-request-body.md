@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV1UtmTemplatesIdRequestBody } from "linkkit/models/operations";
+import { PatchV1UtmTemplatesIdRequestBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: PatchV1UtmTemplatesIdRequestBody = {};
 ```

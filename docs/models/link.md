@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Link } from "linkkit/models";
+import { Link } from "@getlinkkit/linkkit/models";
 
 let value: Link = {
   shortCode: "abc123",

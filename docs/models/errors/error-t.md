@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ErrorT } from "linkkit/models/errors";
+import { ErrorT } from "@getlinkkit/linkkit/models/errors";
 
 // No examples available for this model
 ```

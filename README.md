@@ -55,39 +55,35 @@ Responses include a `meta` object with `page`, `limit`, and `total`.
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-> [!TIP]
-> To finish publishing your SDK to npm and others you must [run your first generation action](https://www.speakeasy.com/docs/github-setup#step-by-step-guide).
-
-
 The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
 ```bash
-npm add https://github.com/Linkkit-Space/linkkit-ts-sdk
+npm add @getlinkkit/linkkit
 ```
 
 ### PNPM
 
 ```bash
-pnpm add https://github.com/Linkkit-Space/linkkit-ts-sdk
+pnpm add @getlinkkit/linkkit
 ```
 
 ### Bun
 
 ```bash
-bun add https://github.com/Linkkit-Space/linkkit-ts-sdk
+bun add @getlinkkit/linkkit
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/Linkkit-Space/linkkit-ts-sdk
+yarn add @getlinkkit/linkkit
 ```
 
 > [!NOTE]
 > This package is published as an ES Module (ESM) only. For applications using
-> CommonJS, use `await import()` to import and use this package.
+> CommonJS, use `await import("@getlinkkit/linkkit")` to import and use this package.
 <!-- End SDK Installation [installation] -->
 
 <!-- Start Requirements [requirements] -->
@@ -102,7 +98,7 @@ For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
 ### Example
 
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -131,7 +127,7 @@ This SDK supports the following security schemes globally:
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -312,7 +308,7 @@ syntax.
 Here's an example of one such pagination call:
 
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -340,7 +336,7 @@ Some of the endpoints in this SDK support retries.  If you use the SDK without a
 
 To change the default retry strategy for a single API call, simply provide a retryConfig object to the call:
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -367,7 +363,7 @@ run();
 
 If you'd like to override the default retry strategy for all operations that support retries, you can provide a retryConfig at SDK initialization:
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   retryConfig: {
@@ -409,8 +405,8 @@ run();
 
 ### Example
 ```typescript
-import { Linkkit } from "linkkit";
-import * as errors from "linkkit/models/errors";
+import { Linkkit } from "@getlinkkit/linkkit";
+import * as errors from "@getlinkkit/linkkit/models/errors";
 
 const linkkit = new Linkkit({
   security: {
@@ -477,7 +473,7 @@ run();
 
 The default server can be overridden globally by passing a URL to the `serverURL: string` optional parameter when initializing the SDK client instance. For example:
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   serverURL: "https://api.uselinkkit.com",
@@ -513,9 +509,9 @@ The following example shows how to:
 - use the `"requestError"` hook to log errors
 
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 import { ProxyAgent } from "undici";
-import { HTTPClient } from "linkkit/lib/http";
+import { HTTPClient } from "@getlinkkit/linkkit/lib/http";
 
 const dispatcher = new ProxyAgent("http://proxy.example.com:8080");
 
@@ -558,7 +554,7 @@ You can pass a logger that matches `console`'s interface as an SDK option.
 > Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
 
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const sdk = new Linkkit({ debugLogger: console });
 ```

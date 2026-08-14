@@ -5,13 +5,13 @@
 import dotenv from "dotenv";
 dotenv.config();
 /**
- * Example usage of the linkkit SDK
+ * Example usage of the @getlinkkit/linkkit SDK
  *
  * To run this example from the examples directory:
  * npm run build && npx tsx linksHealthCheck.example.ts
  */
 
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 

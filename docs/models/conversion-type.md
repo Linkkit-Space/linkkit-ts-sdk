@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ConversionType } from "linkkit/models";
+import { ConversionType } from "@getlinkkit/linkkit/models";
 
 let value: ConversionType = "lead";
 

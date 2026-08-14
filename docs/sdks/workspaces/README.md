@@ -16,7 +16,7 @@ Returns all workspaces the API key belongs to, including the caller's role in ea
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/workspaces" method="get" path="/v1/workspaces" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -38,8 +38,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { workspacesList } from "linkkit/funcs/workspaces-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { workspacesList } from "@getlinkkit/linkkit/funcs/workspaces-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

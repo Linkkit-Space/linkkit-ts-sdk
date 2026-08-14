@@ -23,7 +23,7 @@ Returns `ok` if the API is up. No authentication required.
 
 <!-- UsageSnippet language="typescript" operationID="get_/health" method="get" path="/health" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -41,8 +41,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksHealthCheck } from "linkkit/funcs/links-health-check.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksHealthCheck } from "@getlinkkit/linkkit/funcs/links-health-check.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -87,7 +87,7 @@ Returns a paginated list of short links, ordered by creation date descending.
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/links" method="get" path="/v1/links" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -111,8 +111,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksList } from "linkkit/funcs/links-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksList } from "@getlinkkit/linkkit/funcs/links-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -167,7 +167,7 @@ a database blocklist, and Google Safe Browsing before being saved.
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/links" method="post" path="/v1/links" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -192,8 +192,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksCreate } from "linkkit/funcs/links-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksCreate } from "@getlinkkit/linkkit/funcs/links-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -249,7 +249,7 @@ Useful for idempotent integrations (e.g. Zapier).
 
 <!-- UsageSnippet language="typescript" operationID="put_/v1/links/{shortCode}" method="put" path="/v1/links/{shortCode}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -277,8 +277,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksUpsert } from "linkkit/funcs/links-upsert.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksUpsert } from "@getlinkkit/linkkit/funcs/links-upsert.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -335,7 +335,7 @@ Get a link
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/links/{shortCode}" method="get" path="/v1/links/{shortCode}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -359,8 +359,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksGet } from "linkkit/funcs/links-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksGet } from "@getlinkkit/linkkit/funcs/links-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -413,7 +413,7 @@ Partial update — only include fields you want to change.
 
 <!-- UsageSnippet language="typescript" operationID="patch_/v1/links/{shortCode}" method="patch" path="/v1/links/{shortCode}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -440,8 +440,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksUpdate } from "linkkit/funcs/links-update.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksUpdate } from "@getlinkkit/linkkit/funcs/links-update.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -497,7 +497,7 @@ Delete a link
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/links/{shortCode}" method="delete" path="/v1/links/{shortCode}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -521,8 +521,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksDelete } from "linkkit/funcs/links-delete.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksDelete } from "@getlinkkit/linkkit/funcs/links-delete.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -578,7 +578,7 @@ The response is `201` even when some links are skipped.
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/links/bulk" method="post" path="/v1/links/bulk" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -602,8 +602,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { linksBulkCreate } from "linkkit/funcs/links-bulk-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { linksBulkCreate } from "@getlinkkit/linkkit/funcs/links-bulk-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

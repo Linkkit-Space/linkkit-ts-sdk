@@ -5,7 +5,7 @@ Paginated list of links
 ## Example Usage
 
 ```typescript
-import { GetV1LinksResponseBody } from "linkkit/models/operations";
+import { GetV1LinksResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1LinksResponseBody = {
   data: [

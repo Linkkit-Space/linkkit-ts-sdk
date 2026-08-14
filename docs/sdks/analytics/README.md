@@ -17,7 +17,7 @@ Returns total link count and total click count, optionally filtered by a date ra
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/analytics/summary" method="get" path="/v1/analytics/summary" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { analyticsGetSummary } from "linkkit/funcs/analytics-get-summary.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { analyticsGetSummary } from "@getlinkkit/linkkit/funcs/analytics-get-summary.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -97,7 +97,7 @@ Returns paginated click events for a specific short link, with device, geo, and 
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/analytics/links/{shortCode}" method="get" path="/v1/analytics/links/{shortCode}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -123,8 +123,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { analyticsGetLinkEvents } from "linkkit/funcs/analytics-get-link-events.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { analyticsGetLinkEvents } from "@getlinkkit/linkkit/funcs/analytics-get-link-events.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

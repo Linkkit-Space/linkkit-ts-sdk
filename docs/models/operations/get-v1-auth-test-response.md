@@ -5,7 +5,7 @@ API key is valid
 ## Example Usage
 
 ```typescript
-import { GetV1AuthTestResponse } from "linkkit/models/operations";
+import { GetV1AuthTestResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1AuthTestResponse = {};
 ```

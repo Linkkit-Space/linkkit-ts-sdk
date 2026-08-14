@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV1LinksShortCodeRequestBody } from "linkkit/models/operations";
+import { PatchV1LinksShortCodeRequestBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: PatchV1LinksShortCodeRequestBody = {
   customDomain: "go.acme.com",

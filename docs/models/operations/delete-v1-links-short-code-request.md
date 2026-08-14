@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { DeleteV1LinksShortCodeRequest } from "linkkit/models/operations";
+import { DeleteV1LinksShortCodeRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: DeleteV1LinksShortCodeRequest = {
   shortCode: "<value>",

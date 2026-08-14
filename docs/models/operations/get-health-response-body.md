@@ -5,7 +5,7 @@ API is healthy
 ## Example Usage
 
 ```typescript
-import { GetHealthResponseBody } from "linkkit/models/operations";
+import { GetHealthResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetHealthResponseBody = {
   status: "ok",

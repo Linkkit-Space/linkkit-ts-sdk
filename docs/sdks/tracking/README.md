@@ -20,7 +20,7 @@ short link) to attribute the lead to a specific click.
 
 <!-- UsageSnippet language="typescript" operationID="post_/track/lead" method="post" path="/track/lead" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { trackingLead } from "linkkit/funcs/tracking-lead.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { trackingLead } from "@getlinkkit/linkkit/funcs/tracking-lead.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Pass `lkclid` (the Linkkit click ID) to attribute the sale to a specific click.
 
 <!-- UsageSnippet language="typescript" operationID="post_/track/sale" method="post" path="/track/sale" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -121,8 +121,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { trackingTrackSale } from "linkkit/funcs/tracking-track-sale.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { trackingTrackSale } from "@getlinkkit/linkkit/funcs/tracking-track-sale.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

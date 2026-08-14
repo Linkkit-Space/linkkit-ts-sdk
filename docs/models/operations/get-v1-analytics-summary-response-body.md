@@ -5,7 +5,7 @@ Summary stats
 ## Example Usage
 
 ```typescript
-import { GetV1AnalyticsSummaryResponseBody } from "linkkit/models/operations";
+import { GetV1AnalyticsSummaryResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1AnalyticsSummaryResponseBody = {
   totalLinks: 142,

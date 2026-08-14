@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Tag } from "linkkit/models";
+import { Tag } from "@getlinkkit/linkkit/models";
 
 let value: Tag = {
   name: "marketing",

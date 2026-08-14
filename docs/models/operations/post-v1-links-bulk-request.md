@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostV1LinksBulkRequest } from "linkkit/models/operations";
+import { PostV1LinksBulkRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PostV1LinksBulkRequest = {
   links: [],

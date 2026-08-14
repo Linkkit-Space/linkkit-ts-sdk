@@ -18,7 +18,7 @@ List QR codes
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/qr-codes" method="get" path="/v1/qr-codes" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { qrCodesList } from "linkkit/funcs/qr-codes-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { qrCodesList } from "@getlinkkit/linkkit/funcs/qr-codes-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -96,7 +96,7 @@ Create a QR code
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/qr-codes" method="post" path="/v1/qr-codes" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -121,8 +121,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { qrCodesCreate } from "linkkit/funcs/qr-codes-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { qrCodesCreate } from "@getlinkkit/linkkit/funcs/qr-codes-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -176,7 +176,7 @@ Get a QR code
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/qr-codes/{id}" method="get" path="/v1/qr-codes/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -200,8 +200,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { qrCodesGet } from "linkkit/funcs/qr-codes-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { qrCodesGet } from "@getlinkkit/linkkit/funcs/qr-codes-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -254,7 +254,7 @@ Update a QR code
 
 <!-- UsageSnippet language="typescript" operationID="patch_/v1/qr-codes/{id}" method="patch" path="/v1/qr-codes/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -279,8 +279,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { qrCodesUpdate } from "linkkit/funcs/qr-codes-update.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { qrCodesUpdate } from "@getlinkkit/linkkit/funcs/qr-codes-update.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -334,7 +334,7 @@ Delete a QR code
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/qr-codes/{id}" method="delete" path="/v1/qr-codes/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -358,8 +358,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { qrCodesDelete } from "linkkit/funcs/qr-codes-delete.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { qrCodesDelete } from "@getlinkkit/linkkit/funcs/qr-codes-delete.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
