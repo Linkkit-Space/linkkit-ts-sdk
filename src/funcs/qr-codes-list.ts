@@ -4,7 +4,6 @@
 
 import * as z from "zod/v4-mini";
 import { LinkkitCore } from "../core.js";
-import { dlv } from "../lib/dlv.js";
 import { encodeFormQuery } from "../lib/encodings.js";
 import { matchStatusCode } from "../lib/http.js";
 import * as M from "../lib/matchers.js";
@@ -227,7 +226,8 @@ async function $do(
     if (!responseData) {
       return { next: () => null };
     }
-    const results = dlv(responseData, "data");
+    const results = (responseData as { data?: unknown } | null | undefined)
+      ?.data;
     if (!Array.isArray(results) || !results.length) {
       return { next: () => null };
     }

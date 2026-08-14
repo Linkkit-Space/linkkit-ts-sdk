@@ -20,7 +20,7 @@ List all lists
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/lists" method="get" path="/v1/lists" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -42,8 +42,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { listsGetAll } from "linkkit/funcs/lists-get-all.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { listsGetAll } from "@getlinkkit/linkkit/funcs/lists-get-all.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -93,7 +93,7 @@ Create a list
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/lists" method="post" path="/v1/lists" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -118,8 +118,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { listsCreate } from "linkkit/funcs/lists-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { listsCreate } from "@getlinkkit/linkkit/funcs/lists-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -173,7 +173,7 @@ Get a list
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/lists/{id}" method="get" path="/v1/lists/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -197,8 +197,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { listsGet } from "linkkit/funcs/lists-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { listsGet } from "@getlinkkit/linkkit/funcs/lists-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -251,7 +251,7 @@ Update a list
 
 <!-- UsageSnippet language="typescript" operationID="patch_/v1/lists/{id}" method="patch" path="/v1/lists/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -276,8 +276,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { listsUpdate } from "linkkit/funcs/lists-update.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { listsUpdate } from "@getlinkkit/linkkit/funcs/lists-update.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -331,7 +331,7 @@ Delete a list
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/lists/{id}" method="delete" path="/v1/lists/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -355,8 +355,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { listsDelete } from "linkkit/funcs/lists-delete.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { listsDelete } from "@getlinkkit/linkkit/funcs/lists-delete.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

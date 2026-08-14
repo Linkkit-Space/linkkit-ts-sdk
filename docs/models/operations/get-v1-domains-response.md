@@ -5,7 +5,7 @@ List of domains
 ## Example Usage
 
 ```typescript
-import { GetV1DomainsResponse } from "linkkit/models/operations";
+import { GetV1DomainsResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1DomainsResponse = {
   data: [

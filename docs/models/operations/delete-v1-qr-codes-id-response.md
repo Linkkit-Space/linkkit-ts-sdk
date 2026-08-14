@@ -5,7 +5,7 @@ QR code deleted
 ## Example Usage
 
 ```typescript
-import { DeleteV1QrCodesIdResponse } from "linkkit/models/operations";
+import { DeleteV1QrCodesIdResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: DeleteV1QrCodesIdResponse = {};
 ```

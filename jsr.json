@@ -1,8 +1,8 @@
 
 
 {
-  "name": "linkkit",
-  "version": "0.2.3",
+  "name": "@getlinkkit/linkkit",
+  "version": "0.2.4",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    

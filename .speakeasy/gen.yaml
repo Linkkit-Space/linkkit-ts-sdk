@@ -34,18 +34,19 @@ generation:
     generateNewTests: true
     skipResponseBodyAssertions: false
 typescript:
-  version: 0.2.3
+  version: 0.2.4
   acceptHeaderEnum: false
   additionalDependencies:
     dependencies: {}
     devDependencies:
+      '@types/react': ^18.3.0
       react: ^18.3.1
-      "@types/react": ^18.3.0
     peerDependencies:
-      react: ">=18"
+      react: '>=18'
   additionalPackageJSON: {}
   additionalScripts: {}
   alwaysIncludeInboundAndOutbound: false
+  apiPromiseHelpers: false
   author: Speakeasy
   baseErrorName: LinkkitError
   clientServerStatusCodesAsErrors: true
@@ -56,6 +57,7 @@ typescript:
   enableReactQuery: false
   enumFormat: union
   envVarPrefix: LINKKIT
+  eventStreamClassName: EventStream
   exportZodModelNamespace: false
   fixEnumNameSanitization: false
   flatAdditionalProperties: true
@@ -84,9 +86,11 @@ typescript:
   moduleFormat: esm
   multipartArrayFormat: standard
   outputModelSuffix: output
-  packageName: "@getlinkkit/linkkit"
+  packageName: '@getlinkkit/linkkit'
   preApplyUnionDiscriminators: true
   preserveModelFieldNames: false
+  privateIdentifierPrefix: '#'
+  requestExtras: false
   responseFormat: flat
   sseFlatResponse: false
   templateVersion: v2

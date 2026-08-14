@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Domain } from "linkkit/models";
+import { Domain } from "@getlinkkit/linkkit/models";
 
 let value: Domain = {
   domain: "go.acme.com",

@@ -5,7 +5,7 @@ Paginated list of conversions
 ## Example Usage
 
 ```typescript
-import { GetV1ConversionsResponseBody } from "linkkit/models/operations";
+import { GetV1ConversionsResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1ConversionsResponseBody = {
   data: [

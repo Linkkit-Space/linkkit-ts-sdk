@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV1AnalyticsSummaryRequest } from "linkkit/models/operations";
+import { GetV1AnalyticsSummaryRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1AnalyticsSummaryRequest = {
   from: new Date("2024-01-01T00:00:00Z"),

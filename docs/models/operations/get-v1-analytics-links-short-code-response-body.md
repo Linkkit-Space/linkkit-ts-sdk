@@ -5,7 +5,7 @@ Paginated click events
 ## Example Usage
 
 ```typescript
-import { GetV1AnalyticsLinksShortCodeResponseBody } from "linkkit/models/operations";
+import { GetV1AnalyticsLinksShortCodeResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1AnalyticsLinksShortCodeResponseBody = {
   data: [

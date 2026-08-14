@@ -19,7 +19,7 @@ Downloads all links as a CSV file. Authenticate via `?api_key=` query param
 
 <!-- UsageSnippet language="typescript" operationID="get_/feeds/links.csv" method="get" path="/feeds/links.csv" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -39,8 +39,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { exportsExportLinksAsCsv } from "linkkit/funcs/exports-export-links-as-csv.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { exportsExportLinksAsCsv } from "@getlinkkit/linkkit/funcs/exports-export-links-as-csv.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -88,7 +88,7 @@ Downloads click events for a specific short link as CSV.
 
 <!-- UsageSnippet language="typescript" operationID="get_/feeds/clicks.csv" method="get" path="/feeds/clicks.csv" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit();
 
@@ -109,8 +109,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { exportsGetClicksCsv } from "linkkit/funcs/exports-get-clicks-csv.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { exportsGetClicksCsv } from "@getlinkkit/linkkit/funcs/exports-get-clicks-csv.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

@@ -5,7 +5,7 @@ Tag deleted
 ## Example Usage
 
 ```typescript
-import { DeleteV1TagsIdResponse } from "linkkit/models/operations";
+import { DeleteV1TagsIdResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: DeleteV1TagsIdResponse = {};
 ```

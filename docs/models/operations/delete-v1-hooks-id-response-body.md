@@ -5,7 +5,7 @@ Webhook deleted
 ## Example Usage
 
 ```typescript
-import { DeleteV1HooksIdResponseBody } from "linkkit/models/operations";
+import { DeleteV1HooksIdResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: DeleteV1HooksIdResponseBody = {
   unsubscribed: true,

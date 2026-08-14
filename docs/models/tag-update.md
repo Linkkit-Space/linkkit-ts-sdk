@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TagUpdate } from "linkkit/models";
+import { TagUpdate } from "@getlinkkit/linkkit/models";
 
 let value: TagUpdate = {};
 ```

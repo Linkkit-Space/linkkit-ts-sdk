@@ -1,6 +1,6 @@
-# linkkit Examples
+# @getlinkkit/linkkit Examples
 
-This directory contains example scripts demonstrating how to use the linkkit SDK.
+This directory contains example scripts demonstrating how to use the @getlinkkit/linkkit SDK.
 
 ## Prerequisites
 

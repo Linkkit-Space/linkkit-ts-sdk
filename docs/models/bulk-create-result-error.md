@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BulkCreateResultError } from "linkkit/models";
+import { BulkCreateResultError } from "@getlinkkit/linkkit/models";
 
 let value: BulkCreateResultError = {};
 ```

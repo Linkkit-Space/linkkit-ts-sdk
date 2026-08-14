@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { BulkCreateResult } from "linkkit/models";
+import { BulkCreateResult } from "@getlinkkit/linkkit/models";
 
 let value: BulkCreateResult = {
   created: 95,

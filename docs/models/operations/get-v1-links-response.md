@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetV1LinksResponse } from "linkkit/models/operations";
+import { GetV1LinksResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1LinksResponse = {
   result: {

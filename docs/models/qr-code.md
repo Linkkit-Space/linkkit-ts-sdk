@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { QrCode } from "linkkit/models";
+import { QrCode } from "@getlinkkit/linkkit/models";
 
 let value: QrCode = {
   color: "#000000",

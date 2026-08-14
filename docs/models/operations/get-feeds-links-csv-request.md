@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { GetFeedsLinksCsvRequest } from "linkkit/models/operations";
+import { GetFeedsLinksCsvRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetFeedsLinksCsvRequest = {
   apiKey: "<value>",

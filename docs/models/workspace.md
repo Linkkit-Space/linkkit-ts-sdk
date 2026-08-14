@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Workspace } from "linkkit/models";
+import { Workspace } from "@getlinkkit/linkkit/models";
 
 let value: Workspace = {
   name: "Acme Inc",

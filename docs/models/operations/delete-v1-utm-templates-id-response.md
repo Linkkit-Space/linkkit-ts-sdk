@@ -5,7 +5,7 @@ UTM template deleted
 ## Example Usage
 
 ```typescript
-import { DeleteV1UtmTemplatesIdResponse } from "linkkit/models/operations";
+import { DeleteV1UtmTemplatesIdResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: DeleteV1UtmTemplatesIdResponse = {};
 ```

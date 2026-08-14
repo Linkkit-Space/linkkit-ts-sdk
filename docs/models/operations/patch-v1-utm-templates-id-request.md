@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PatchV1UtmTemplatesIdRequest } from "linkkit/models/operations";
+import { PatchV1UtmTemplatesIdRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PatchV1UtmTemplatesIdRequest = {
   id: "0ff2cf09-e65e-4d9a-ade1-94666f09c269",

@@ -5,7 +5,7 @@ List of workspaces
 ## Example Usage
 
 ```typescript
-import { GetV1WorkspacesResponse } from "linkkit/models/operations";
+import { GetV1WorkspacesResponse } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1WorkspacesResponse = {
   data: [

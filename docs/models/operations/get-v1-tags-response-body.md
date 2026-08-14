@@ -5,7 +5,7 @@ All tags ordered by name
 ## Example Usage
 
 ```typescript
-import { GetV1TagsResponseBody } from "linkkit/models/operations";
+import { GetV1TagsResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1TagsResponseBody = {
   data: [

@@ -18,7 +18,7 @@ List UTM templates
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/utm-templates" method="get" path="/v1/utm-templates" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -40,8 +40,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { utmTemplatesList } from "linkkit/funcs/utm-templates-list.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { utmTemplatesList } from "@getlinkkit/linkkit/funcs/utm-templates-list.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -91,7 +91,7 @@ Create a UTM template
 
 <!-- UsageSnippet language="typescript" operationID="post_/v1/utm-templates" method="post" path="/v1/utm-templates" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -118,8 +118,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { utmTemplatesCreate } from "linkkit/funcs/utm-templates-create.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { utmTemplatesCreate } from "@getlinkkit/linkkit/funcs/utm-templates-create.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -175,7 +175,7 @@ Get a UTM template
 
 <!-- UsageSnippet language="typescript" operationID="get_/v1/utm-templates/{id}" method="get" path="/v1/utm-templates/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -199,8 +199,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { utmTemplatesGet } from "linkkit/funcs/utm-templates-get.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { utmTemplatesGet } from "@getlinkkit/linkkit/funcs/utm-templates-get.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -253,7 +253,7 @@ Update a UTM template
 
 <!-- UsageSnippet language="typescript" operationID="patch_/v1/utm-templates/{id}" method="patch" path="/v1/utm-templates/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -278,8 +278,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { utmTemplatesUpdate } from "linkkit/funcs/utm-templates-update.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { utmTemplatesUpdate } from "@getlinkkit/linkkit/funcs/utm-templates-update.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -333,7 +333,7 @@ Delete a UTM template
 
 <!-- UsageSnippet language="typescript" operationID="delete_/v1/utm-templates/{id}" method="delete" path="/v1/utm-templates/{id}" -->
 ```typescript
-import { Linkkit } from "linkkit";
+import { Linkkit } from "@getlinkkit/linkkit";
 
 const linkkit = new Linkkit({
   security: {
@@ -357,8 +357,8 @@ run();
 The standalone function version of this method:
 
 ```typescript
-import { LinkkitCore } from "linkkit/core.js";
-import { utmTemplatesDelete } from "linkkit/funcs/utm-templates-delete.js";
+import { LinkkitCore } from "@getlinkkit/linkkit/core.js";
+import { utmTemplatesDelete } from "@getlinkkit/linkkit/funcs/utm-templates-delete.js";
 
 // Use `LinkkitCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.

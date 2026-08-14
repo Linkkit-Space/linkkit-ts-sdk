@@ -5,7 +5,7 @@ All UTM templates ordered by name
 ## Example Usage
 
 ```typescript
-import { GetV1UtmTemplatesResponseBody } from "linkkit/models/operations";
+import { GetV1UtmTemplatesResponseBody } from "@getlinkkit/linkkit/models/operations";
 
 let value: GetV1UtmTemplatesResponseBody = {
   data: [

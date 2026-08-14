@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { PostTrackLeadRequest } from "linkkit/models/operations";
+import { PostTrackLeadRequest } from "@getlinkkit/linkkit/models/operations";
 
 let value: PostTrackLeadRequest = {
   publishableKey: "pk_live_abc123",

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { UtmTemplate } from "linkkit/models";
+import { UtmTemplate } from "@getlinkkit/linkkit/models";
 
 let value: UtmTemplate = {
   name: "Summer Campaign",
