@@ -14,7 +14,7 @@ targets:
         sourceRevisionDigest: sha256:20aad36038e60ef60c8df4e95b973fd542da777c12c97c7550eb3571cbf6ec5b
         sourceBlobDigest: sha256:64b37849e4dfbc4b4eb481e7be1708dd59992d8cdcc5a653143f26cb15b81798
         codeSamplesNamespace: linkkit-api-typescript-code-samples
-        codeSamplesRevisionDigest: sha256:8bd9b203b432c5a924eaf953bea0ab36228610ace452e69358885b97ca6fb808
+        codeSamplesRevisionDigest: sha256:08e31de9d553fa578a5ef08b4ade40d2c29a21f0f0834af80ea39c262247584a
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
