@@ -5,15 +5,15 @@ management:
   docVersion: v1
   speakeasyVersion: 1.793.2
   generationVersion: 2.928.0
-  releaseVersion: 0.2.5
-  configChecksum: f35fe90ce1eb9bec0501f2d558209624
+  releaseVersion: 0.2.4
+  configChecksum: 6da14a6d1f78c91a607adf188db2d235
   repoURL: https://github.com/Linkkit-Space/linkkit-ts-sdk.git
   installationURL: https://github.com/Linkkit-Space/linkkit-ts-sdk
   published: true
 persistentEdits:
-  generation_id: f1cd4469-51b8-41d9-a56b-33a3df6f0813
-  pristine_commit_hash: c529433e4aa5749d62c363391d73520867c94cd7
-  pristine_tree_hash: 4b305ca9964dfcc600c75e156ee4e05309c29660
+  generation_id: 6e1d0a6c-30b2-478a-87b0-8b12bb6ffc5b
+  pristine_commit_hash: 8d7d814b6f038717eec52331dfb60d468c6ae964
+  pristine_tree_hash: 21cbdf596dceb38cd109393d99bf0ecee3464508
 features:
   typescript:
     additionalDependencies: 0.1.0
@@ -514,12 +514,12 @@ trackedFiles:
     pristine_git_object: 0a817cc2fe34afbeb5943f49fe856808e27555e4
   jsr.json:
     id: 7f6ab7767282
-    last_write_checksum: sha1:cae49c657735d6bf77ac97a969a5ec443977cc1d
-    pristine_git_object: e9af347ddc3d661df0f0eab9e0084d8f3a420cbb
+    last_write_checksum: sha1:bf867af9da75804da6d5ae77cc1c730c3732175f
+    pristine_git_object: eb26cdaf46a5652b47879bbdecd1c46c56e7f13f
   package.json:
     id: 7030d0b2f71b
-    last_write_checksum: sha1:114b3f6a17a4a73ced782884ae8aab701371a67c
-    pristine_git_object: 9be00438f42d237fd08ae613f02b963a2c63769d
+    last_write_checksum: sha1:0065760d5a95139b58684f256fb846477fc00031
+    pristine_git_object: 0da46af1550e500265be9f7308730a80bc40437c
   src/core.ts:
     id: f431fdbcd144
     last_write_checksum: sha1:ee26b494584c1219fac1b34cbb831e86738216cd
@@ -710,8 +710,8 @@ trackedFiles:
     pristine_git_object: 44be0eae8246521b230e8e711a88eff738fc015d
   src/lib/config.ts:
     id: 320761608fb3
-    last_write_checksum: sha1:b2736b1bd4a38e69087953db6a715cae9aefc02e
-    pristine_git_object: 4a4649890ff4e777adb9d799f808511848c3199c
+    last_write_checksum: sha1:271f8a87ce1966ec2df944510e774c77f6bebe23
+    pristine_git_object: ede46847e2739fd0486e3b5a6e1fc632ee411ba4
   src/lib/encodings.ts:
     id: 3bd8ead98afd
     last_write_checksum: sha1:7533dcb79b22b8c84ac7b90aec94317d12bad5f8
